@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<LAAS>
+  <Theme acronyme="IC" description="Informatique Critique" >
+
+	<EquipeDeRecherche nom="Ingénierie Système et Intégration" acronyme="ISI" >
+
+		<membres>
+			<membre nom="ESTEBAN" prenom="Philippe" grade="Cadre Scientifique, Maître de conférences" email="philippe.esteban@laas.fr" membreID="003">
+				<productionsScientifiques>
+					<Revue titre="A method and tool to support the management of systems engineering projects" nomAuteur="C.BARON, P.ESTEBAN, R.XUE, D.ESTEVE, M.MALBERT" affiliationAuteur="ISI, N2IS, SIGMA" anneePublication="2015" nombrePages="10" nomConference="Technology Innovation Management Review" classeConference="N° 15097"/>
+					<ArticleConference titre="How to choos a systems engineering standard: analysis and comparison of current standards" nomAuteur="R.XUE, C.BARON, P.ESTEBAN" affiliationAuteur="ISI" anneePublication="2014" nombrePages="24" nomConference="International Conference on Engineering Science and Technology ( ICEST )" classeConference="N° 13734"/>
+				</productionsScientifiques>
+			</membre>
+			<membre nom="BARON" prenom="Claude" grade="Cadre Scientifique,Professeur des universités 1ère classe" email="claude.baron@laas.fr" membreID="002">
+				<productionsScientifiques>
+					<Revue titre="SysPEM: toward a consistent and unified system process engineering metamodel" nomAuteur="A.JAKJOUD, M.ZRIKEM, C.BARON, A.ABDERRAHMANE" affiliationAuteur="ISI, Univ. Cadi Ayyad" anneePublication="2016" nombrePages="18" nomConference="Journal of Intelligent Manufacturing" classeConference="N° 14141"/>
+				</productionsScientifiques>
+			</membre>
+		</membres>
+
+		<theses>
+			<TheseSoutenue titre="Improving cooperation between systems engineering and project management in engineering projects - Towards the alignment of systems engineering and project management standards and guides" domaine="Informatique [cs] / Systèmes et contrôle [cs.SY]" dateDebut="2016" dateSoutenance="15/02/2016">
+				<Encadrants>002</Encadrants>
+				<Encadrants>003</Encadrants>
+			</TheseSoutenue>
+		</theses>
+
+		<responsable>002</responsable>
+	</EquipeDeRecherche>
+
+	<EquipeDeRecherche nom="Tolérance aux fautes et Sûreté de Fonctionnement Informatique" acronyme="TSF" >
+
+		<membres>
+			<membre nom="ALATA" prenom="Eric" grade="Cadre Scientifique, Maître de conférences" email="eric.alata@laas.fr" membreID="004" >
+				<productionsScientifiques>
+					<Revue titre="State of the art of network protocol reverse engineering tools" nomAuteur="J.DUCHENE, C.LE GUERNIC, E.ALATA, V.NICOMETTE, M.KAANICHE" affiliationAuteur="TSF, INRIA Rennes" anneePublication="2017" nombrePages="27" nomConference="Journal of Computer Virology and Hacking Techniques" classeConference="N° 17109"/>
+				</productionsScientifiques>
+			</membre>
+			<membre nom="KAANICHE" prenom="Mohamed" grade="Cadre Scientifique, Directeur de recherche de 2ème classe" email="Mohamed.Kaaniche@laas.fr" membreID="005">
+				<productionsScientifiques>
+					<Revue titre="State of the art of network protocol reverse engineering tools" nomAuteur="J.DUCHENE, C.LE GUERNIC, E.ALATA, V.NICOMETTE, M.KAANICHE" affiliationAuteur="TSF, INRIA Rennes" anneePublication="2017" nombrePages="27" nomConference="Journal of Computer Virology and Hacking Techniques" classeConference="N° 17109"/>
+				</productionsScientifiques>
+			</membre>
+			<membre nom="KANOUN" prenom="Karama" grade="Cadre Scientifique, Directeur de recherche de 1ère classe" email="Karama.Kanoun@laas.fr" membreID="001">
+				<productionsScientifiques>
+					<RapportDeRecherche titre="Prototype de prévision des défaillances et expérimentations. Tâche 4.2.B" nomAuteur="G.DA SILVA SILVESTRE, C.SAUVANAUD, M.KAANICHE, K.KANOUN" affiliationAuteur="" anneePublication="2015" nombrePages="10" projetRechercheConcerne="Project Secured Virtual Cloud (SVC)"/>
+				</productionsScientifiques>
+			</membre>
+		</membres>
+
+		<theses>
+			<TheseSoutenue titre="Monitoring et détection d'anomalie par apprentissage dans des infrastructures virtualisées" domaine="Informatique [cs]" dateDebut="2016" dateSoutenance="13/12/2016">
+				<Encadrants>001</Encadrants>
+				<Encadrants>005</Encadrants>
+			</TheseSoutenue>
+		</theses>
+
+		<responsable>005</responsable>
+	</EquipeDeRecherche>
+
+	<ProjetDeRecherche titre="INGénierie des EQUIPements embarqués" acronyme="INGEQUIP" dateDebut="11/12/2014" duree="3ans et 6mois" coutGlobal="" budget="" >
+		<PartenairesParticipants nom="VERNADAT François" pays="France"/>
+		<porteur nom="VERNADAT" prenom="François" grade="Cadre Scientifique, Professeur des universités 1ère classe" email="francois@laas.fr" membreID="006">
+			<productionsScientifiques>
+						<Revue titre="Symmetry reduction for time Petri net state classes" nomAuteur="P.A.BOURDIL, B.BERTHOMIEU, S.DAL ZILIO, F.VERNADAT" affiliationAuteur="VERTICS" anneePublication="2016" nombrePages="17" nomConference="Science of Computer Programming" classeConference="N° 16601"/>
+			</productionsScientifiques>
+		</porteur>
+	</ProjetDeRecherche>
+
+	<Evenements>
+		<Reunion nom="Vérification de langages de scenarios avec des réseaux de Petri" dateDebut="22/09/2014" dateFin="22/09/2014"/>
+	</Evenements>
+
+	<responsable>001</responsable>
+  </Theme>
+
+
+</LAAS>

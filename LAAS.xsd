@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+<xsd:element name="LAAS">
+	<xsd:complexType>
+		<xsd:sequence>
+			<xsd:element name="Theme" type="ThemeType"/>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:element>
+
+<xsd:complexType name="ThemeType">
+	<xsd:sequence>
+		<xsd:element name= "EquipeDeRecherche" type="equipeDeRechercheType" minOccurs="1" maxOccurs="unbounded"/>
+		<xsd:element name="ProjetDeRecherche" type="ProjetDeRechercheType" minOccurs="1" maxOccurs="unbounded" />
+		<xsd:element name="Evenements" type="EvenementsType" minOccurs="1" maxOccurs="unbounded" />
+		<xsd:element name="responsable" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+	</xsd:sequence>
+		<xsd:attribute name="acronyme" type="acronymeType" use="required"/>
+		<xsd:attribute name="description" type="xsd:string" use="required"/>
+</xsd:complexType>
+
+<xsd:simpleType name="acronymeType">
+	<xsd:restriction base="xsd:string">
+		<xsd:enumeration value="IC"/>
+		<xsd:enumeration value="RC"/>
+		<xsd:enumeration value="ROB"/>
+		<xsd:enumeration value="DO"/>
+		<xsd:enumeration value="HOPES"/>
+		<xsd:enumeration value="TICS"/>
+		<xsd:enumeration value="MNBT"/>
+		<xsd:enumeration value="GE"/>
+	</xsd:restriction>
+</xsd:simpleType>
+
+<xsd:element name = "Theme" type="ThemeType">
+	<xsd:keyref name="responsableRef" refer="membreCle">
+		<xsd:selector xpath="Theme/responsable"/>
+		<xsd:field xpath="responsable"/>
+	</xsd:keyref>
+</xsd:element>
+
+<xsd:complexType name="membresType">
+	<xsd:sequence>
+		<xsd:element name="membre" type="membreType" minOccurs="1" maxOccurs="unbounded"/>
+	</xsd:sequence>
+</xsd:complexType>
+
+	<xsd:complexType name="membreType" >
+		<xsd:sequence>
+			<xsd:element name="productionsScientifiques" type="productionsScientifiquesType" minOccurs="1" maxOccurs="unbounded"/>
+		</xsd:sequence>
+		<xsd:attribute name="nom" type="xsd:string" use="required" />
+		<xsd:attribute name="prenom" type="xsd:string" use="required" />
+		<xsd:attribute name="grade" type="xsd:string" use="required"/>
+		<xsd:attribute name="email"  type="xsd:string" use="required"/>
+		<xsd:attribute name="membreID" type="xsd:string" use="required"/>
+	</xsd:complexType>
+
+<xsd:element name="membre" type="membreType">
+	<xsd:key name="membreCle">
+		    <xsd:selector xpath="membres/membre"/>
+		    <xsd:field xpath="@membreID"/>
+	</xsd:key>
+</xsd:element>
+
+
+<xsd:complexType name="equipeDeRechercheType" >
+	<xsd:sequence>
+		<xsd:element name = "membres" type="membresType" minOccurs="1" maxOccurs="unbounded"/>
+		<xsd:element name= "theses" type="thesesType" minOccurs="1" maxOccurs="unbounded"/>
+		<xsd:element name="responsable" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+	</xsd:sequence>
+	<xsd:attribute name="nom" type="xsd:string" use="required"/>
+	<xsd:attribute name="acronyme" type="xsd:string" use="required"/>
+</xsd:complexType>
+
+<xsd:element name="EquipeDeRecherche" type="equipeDeRechercheType">
+	<xsd:key name="equipeKey">
+		    <xsd:selector xpath="EquipeDeRecherche"/>
+		    <xsd:field xpath="@nom"/>
+	</xsd:key>
+	<xsd:keyref name="membresRef" refer="membreCle">
+		<xsd:selector xpath="EquipeDeRecherche/responsable"/>
+		<xsd:field xpath="responsable"/>
+	</xsd:keyref>
+</xsd:element>
+
+<xsd:complexType name="ProjetDeRechercheType">
+	<xsd:sequence>
+		<xsd:element name = "PartenairesParticipants" type="partenairesParticipantsType" minOccurs="1" maxOccurs="unbounded"/>
+		<xsd:element name="porteur" type="membreType" minOccurs="1" maxOccurs="1" />
+	</xsd:sequence>
+	<xsd:attribute name="titre" type="xsd:string" use="required"/>
+	<xsd:attribute name="acronyme" type="xsd:string" use="required"/>
+	<xsd:attribute name="dateDebut" type="xsd:string" use="required" />
+	<xsd:attribute name="duree" type="xsd:string" use="required"/>
+	<xsd:attribute name="coutGlobal" type="xsd:string" use="required"/>
+	<xsd:attribute name="budget" type="xsd:string" use="required"/>
+</xsd:complexType>
+
+<xsd:element name="ProjetDeRecherche" type="ProjetDeRechercheType">
+	<!--<xsd:keyref name="porteurRef" refer="membreCle">
+		<xsd:selector xpath="porteur"/>
+		<xsd:field xpath="@membreID"/>
+	</xsd:keyref>-->
+</xsd:element>
+
+<xsd:complexType name="partenairesParticipantsType">
+	<xsd:attribute name="nom" type="xsd:string" use="required"/>
+	<xsd:attribute name="pays" type="xsd:string" use="required"/>
+</xsd:complexType>
+
+<xsd:complexType name="EvenementsType">
+	<xsd:all>
+		<xsd:element name="Conference" type="conferenceType" minOccurs="0" />
+		<xsd:element name="Reunion" type="evenementType" minOccurs="0" />
+	</xsd:all>
+</xsd:complexType>
+
+<xsd:complexType name="evenementType">
+	<xsd:attribute name="nom" type="xsd:string" use="required"/>
+	<xsd:attribute name="dateDebut" type="xsd:string" use="required"/>
+	<xsd:attribute name="dateFin" type="xsd:string" use="required"/>
+</xsd:complexType>
+
+<xsd:complexType name="conferenceType">
+	<xsd:complexContent>
+		<xsd:extension base="evenementType">
+				<xsd:attribute name="classe" type="classeType" use="required"/>
+		</xsd:extension>
+	</xsd:complexContent>
+</xsd:complexType>
+
+<xsd:simpleType name="classeType">
+	<xsd:restriction base="xsd:string">
+		<xsd:enumeration value="A"/>
+		<xsd:enumeration value="B"/>
+		<xsd:enumeration value="C"/>
+	</xsd:restriction>
+</xsd:simpleType>
+
+<xsd:complexType name="thesesType">
+	<xsd:choice>
+		<xsd:element name="TheseSoutenue" type="theseSoutenueType" minOccurs="0"/>
+		<xsd:element name="TheseEnCours" type="theseEnCoursType" minOccurs="0"/>
+	</xsd:choice>
+</xsd:complexType>
+
+
+<xsd:complexType name="theseType">
+	<xsd:attribute name="titre" type="xsd:string" use="required"/>
+	<xsd:attribute name="domaine" type="xsd:string" use="required"/>
+	<xsd:attribute name="dateDebut" type="xsd:string" use="required"/>
+</xsd:complexType>
+
+<xsd:element name="TheseSoutenue" type="theseSoutenueType">
+	<xsd:keyref name="encadrantsSoutenueRef" refer="membreCle">
+		<xsd:selector xpath="TheseSoutenue/Encadrants"/>
+		<xsd:field xpath="Encadrants"/>
+	</xsd:keyref>
+</xsd:element>
+
+<xsd:element name="TheseEnCours" type="theseEnCoursType">
+	<xsd:keyref name="encadrantsEnCoursRef" refer="membreCle">
+		<xsd:selector xpath="TheseEnCours/Encadrants"/>
+		<xsd:field xpath="Encadrants"/>
+	</xsd:keyref>
+</xsd:element>
+
+<xsd:complexType name="theseSoutenueType">
+	<xsd:complexContent>
+		<xsd:extension base="theseType">
+			<xsd:sequence>
+					<xsd:element name="Encadrants" type="xsd:string" minOccurs="0" maxOccurs="3"/>
+			</xsd:sequence>
+			<xsd:attribute name="dateSoutenance" type="xsd:string" use="required"/>
+		</xsd:extension>
+	</xsd:complexContent>
+</xsd:complexType>
+
+<xsd:complexType name="theseEnCoursType">
+	<xsd:complexContent>
+		<xsd:extension base="theseType">
+			<xsd:sequence>
+					<xsd:element name="Encadrants" type="xsd:string" minOccurs="0" maxOccurs="3"/>
+			</xsd:sequence>
+		</xsd:extension>
+	</xsd:complexContent>
+</xsd:complexType>
+
+<xsd:complexType name="productionsScientifiquesType">
+	<xsd:all>
+		<xsd:element name="RapportDeRecherche" type="rapportDeRechercheType" minOccurs="0" />
+		<xsd:element name="ArticleConference" type="articleRevueType" minOccurs="0" />
+		<xsd:element name="Revue" type="articleRevueType" minOccurs="0" />
+	</xsd:all>
+</xsd:complexType>
+
+<xsd:complexType name="productionScientifiqueType">
+	<xsd:attribute name="titre" type="xsd:string" use="required" />
+	<xsd:attribute name="nomAuteur" type="xsd:string" use="required" />
+	<xsd:attribute name="affiliationAuteur" type="xsd:string" use="required" />
+	<xsd:attribute name="anneePublication" type="xsd:integer" use="required" />
+	<xsd:attribute name="nombrePages" type="xsd:integer" use="required" />
+</xsd:complexType>
+
+<xsd:complexType name="articleRevueType">
+	<xsd:complexContent>
+		<xsd:extension base="productionScientifiqueType">
+			<xsd:attribute name="nomConference" type="xsd:string" use="required" />
+			<xsd:attribute name="classeConference" type="xsd:string" use="required" />
+		</xsd:extension>
+	</xsd:complexContent>
+</xsd:complexType>
+
+<xsd:complexType name="rapportDeRechercheType">
+	<xsd:complexContent>
+		<xsd:extension base="productionScientifiqueType">
+			<xsd:attribute name= "projetRechercheConcerne" type="xsd:string" use="required"/>
+		</xsd:extension>
+	</xsd:complexContent>
+</xsd:complexType>
+
+</xsd:schema>
